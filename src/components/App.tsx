@@ -1,3 +1,7 @@
+import { useSeries } from "../hooks/useSeries.query";
+
 export const App = () => {
-  return <h1>BibleProject</h1>;
+  const { series } = useSeries();
+
+  return <p>{JSON.stringify(series)}</p>;
 };
