@@ -1,7 +1,23 @@
 import { useSeries } from "../hooks/useSeries.query";
 
+import { Hero } from "./Hero";
+
 export const App = () => {
   const { series } = useSeries();
 
-  return <p>{JSON.stringify(series)}</p>;
+  return (
+    <div style={{ width: "100vw" }}>
+      <Hero
+        title={series?.title}
+        description={series?.description}
+        images={[
+          series?.images.small,
+          series?.images.mini,
+          series?.images.medium,
+          series?.images.large,
+        ]}
+        color={series?.color}
+      />
+    </div>
+  );
 };
