@@ -1,26 +1,3 @@
-:root {
-  --breakpoint-sm: 640px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 1024px;
-  --breakpoint-xl: 1280px;
-  --breakpoint-2xl: 1536px;
-
-  --bp-min-sm: (min-width: var(--breakpoint-sm));
-  --bp-min-md: (min-width: var(--breakpoint-md));
-  --bp-min-lg: (min-width: var(--breakpoint-lg));
-  --bp-min-xl: (min-width: var(--breakpoint-xl));
-  --bp-min-2xl: (min-width: var(--breakpoint-2xl));
-
-  --bp-range-sm-md: (min-width: var(--breakpoint-sm)) and
-    (max-width: var(--breakpoint-md));
-  --bp-range-md-lg: (min-width: var(--breakpoint-md)) and
-    (max-width: var(--breakpoint-lg));
-  --bp-range-lg-xl: (min-width: var(--breakpoint-lg)) and
-    (max-width: var(--breakpoint-xl));
-  --bp-range-xl-2xl: (min-width: var(--breakpoint-xl)) and
-    (max-width: var(--breakpoint-2xl));
-}
-
 /* Base Styles */
 * {
   padding: 0;
