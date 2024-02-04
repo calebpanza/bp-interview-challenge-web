@@ -1,5 +1,8 @@
 import { useReducer, useEffect } from "react";
 
+import { getSearchParam } from "../utils/getSearchParam";
+import { wait } from "../utils/wait";
+
 interface FetchAction {
   field: string;
   value: any;
@@ -13,7 +16,7 @@ interface SeriesState {
   [key: string]: any;
 }
 
-function fetchReducer(state: SeriesState, action: FetchAction[]) {
+function fetchReducer(state: SeriesState, action: FetchAction[]): SeriesState {
   const newState = { ...state };
 
   action.forEach(({ field, value }: FetchAction) => (newState[field] = value));
@@ -40,6 +43,10 @@ export function useFetch(url: string) {
     ]);
 
     try {
+      // for testing purposes, add a delay to the fetch so we can see the loading state
+      const delayForTesting = getSearchParam("load_delay") || "2500";
+      await wait(parseInt(delayForTesting, 10));
+
       // fetch and save data
       const response = await fetch(url);
       const data = await response.json();
