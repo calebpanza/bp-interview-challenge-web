@@ -1,1 +1,140 @@
+:root {
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
 
+  --bp-min-sm: (min-width: var(--breakpoint-sm));
+  --bp-min-md: (min-width: var(--breakpoint-md));
+  --bp-min-lg: (min-width: var(--breakpoint-lg));
+  --bp-min-xl: (min-width: var(--breakpoint-xl));
+  --bp-min-2xl: (min-width: var(--breakpoint-2xl));
+
+  --bp-range-sm-md: (min-width: var(--breakpoint-sm)) and
+    (max-width: var(--breakpoint-md));
+  --bp-range-md-lg: (min-width: var(--breakpoint-md)) and
+    (max-width: var(--breakpoint-lg));
+  --bp-range-lg-xl: (min-width: var(--breakpoint-lg)) and
+    (max-width: var(--breakpoint-xl));
+  --bp-range-xl-2xl: (min-width: var(--breakpoint-xl)) and
+    (max-width: var(--breakpoint-2xl));
+}
+
+/* Base Styles */
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  width: 100vw;
+  font-family: "Graphik", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  line-height: 1.4em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.2em;
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  overflow: hidden;
+
+  width: 100vw;
+
+  background-color: gray;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+
+  border-bottom: gray 12px solid;
+}
+
+.hero {
+  /* mobile */
+  min-height: 100vw;
+}
+
+@media screen and (min-width: 768px) {
+  /* tablets */
+  .hero {
+    aspect-ratio: 16 / 9;
+    min-height: 0;
+    max-height: 85vh;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  /* desktop */
+  .hero {
+    aspect-ratio: 21 / 9;
+    min-height: 0;
+    max-height: 85vh;
+  }
+}
+
+.hero * {
+  z-index: 1;
+}
+
+.hero .image-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.hero .image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+}
+
+.hero .content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  padding: 10%;
+}
+
+.hero .title {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.hero .description {
+  max-width: 450px;
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* Divider */
+.divider {
+  color: black;
+  border-color: black;
+  opacity: 0.45;
+}
+
+.divider.sm {
+  width: 4rem;
+}
+
+.divider.light {
+  color: white;
+  border-color: white;
+}

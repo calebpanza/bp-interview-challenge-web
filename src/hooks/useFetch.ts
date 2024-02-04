@@ -8,7 +8,7 @@ interface FetchAction {
   value: any;
 }
 
-interface SeriesState {
+interface FetchState {
   loading: boolean;
   errors: any;
   data: any;
@@ -16,7 +16,7 @@ interface SeriesState {
   [key: string]: any;
 }
 
-function fetchReducer(state: SeriesState, action: FetchAction[]): SeriesState {
+function fetchReducer(state: FetchState, action: FetchAction[]) {
   const newState = { ...state };
 
   action.forEach(({ field, value }: FetchAction) => (newState[field] = value));
