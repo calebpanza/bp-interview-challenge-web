@@ -254,24 +254,26 @@ a {
 }
 
 @supports (-webkit-touch-callout: none) {
-  /* specifically mobile devices */
+  @media screen and (max-width: 768px) {
+    /* specifically mobile devices */
 
-  .video-collection .grid {
-    display: flex;
-    flex-direction: row;
-    overflow: scroll;
-    gap: calc(var(--base-unit) * 4);
+    .video-collection .grid {
+      display: flex;
+      flex-direction: row;
+      overflow: scroll;
+      gap: calc(var(--base-unit) * 4);
 
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
 
-  .video-collection .grid::-webkit-scrollbar {
-    display: none;
-  }
+    .video-collection .grid::-webkit-scrollbar {
+      display: none;
+    }
 
-  .video-collection .grid .item {
-    min-width: 65vw;
+    .video-collection .grid .item {
+      min-width: 65vw;
+    }
   }
 }
 
