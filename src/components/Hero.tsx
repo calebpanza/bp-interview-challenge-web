@@ -1,3 +1,9 @@
+import { useActiveVideo } from "../providers/active-video.provider";
+
+import { YouTubeEmbed } from "./YouTubeEmbed";
+
+import { Close } from "../icons/Close";
+
 interface IHero {
   title: string;
   description?: string;
@@ -6,6 +12,8 @@ interface IHero {
 }
 
 export function Hero({ title, description, images, color }: IHero) {
+  const { activeVideo, setActiveVideo } = useActiveVideo();
+
   return (
     <div className="hero" style={{ color, borderColor: color }}>
       <div className="image-container">
@@ -25,6 +33,13 @@ export function Hero({ title, description, images, color }: IHero) {
         <h1 className="title">{title}</h1>
         <hr className="divider sm light" />
         <p className="description">{description}</p>
+      </div>
+
+      <div className={`video-container ${activeVideo ? "enter" : "exit"}`}>
+        <button className="close-button" onClick={() => setActiveVideo(null)}>
+          <Close size={16} />
+        </button>
+        <YouTubeEmbed id={activeVideo} />
       </div>
     </div>
   );
