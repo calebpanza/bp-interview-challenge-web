@@ -113,6 +113,21 @@ a {
   position: absolute;
 }
 
+.hero .wordmark {
+  padding-left: var(--horizontal-padding);
+  padding-top: calc(var(--base-unit) * 4);
+  font-size: 1rem;
+  line-height: 1.2rem;
+}
+
+@media screen and (min-width: 768px) {
+  /* tablets */
+  .hero .wordmark {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+}
+
 .hero .content {
   display: flex;
   flex-direction: column;
