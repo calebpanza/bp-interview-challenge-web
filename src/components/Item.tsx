@@ -1,8 +1,15 @@
 import { Chevron } from "../icons/Chevron";
 
-export function Item({ id, title, description, images, durationSeconds }) {
+export function Item({
+  id,
+  title,
+  description,
+  images,
+  durationSeconds,
+  onClick,
+}) {
   return (
-    <a className="item" href={`/?item_id=${id}`}>
+    <a className="item" href={`/?item_id=${id}`} onClick={onClick}>
       <div className="image-container">
         <img src={images?.small} alt={`${title} cover`} className="image" />
       </div>
