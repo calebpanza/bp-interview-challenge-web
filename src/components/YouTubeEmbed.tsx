@@ -2,7 +2,6 @@ export function YouTubeEmbed({ id }) {
   return (
     <iframe
       width="100%"
-      height="100%"
       src={`https://www.youtube.com/embed/${id}`}
       title="YouTube video player"
       frameBorder="0"

@@ -153,44 +153,86 @@ a {
   font-size: 1rem;
 }
 
-@keyframes videoEnterAnimation {
-  0% {
-    opacity: 0;
-    transform: translateX(50vw);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes videoExitAnimation {
-  0% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(50vw);
-  }
-}
-
 .hero .video-container {
-  flex: 1;
-
-  width: 50vw;
-  aspect-ratio: 16 / 9;
-
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: calc(var(--base-unit) * 4);
 
-  margin-right: calc(var(--base-unit) * 4);
+  transition: opacity 0.35s ease-in-out, transform 0.35s ease-in-out;
+  opacity: 0;
+}
+
+.hero .video-container iframe {
+  aspect-ratio: 16 / 9;
+}
+
+@media screen and (max-width: 768px) {
+  .hero .video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    z-index: 1000;
+
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(50px);
+  }
+
+  .hero .video-container.enter {
+    opacity: 1;
+  }
+
+  .hero .video-container.enter iframe {
+    transform: scale(1);
+  }
+
+  .hero .video-container.exit {
+    pointer-events: none;
+    opacity: 0;
+    transition-delay: 100ms;
+    transition-property: opacity;
+  }
+
+  .hero .video-container.exit iframe {
+    transition: transform 0.25s ease-in-out;
+    transform: scale(0);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  /* tablets */
+  .hero .video-container {
+    flex: 1;
+
+    width: 50vw;
+    aspect-ratio: 16 / 9;
+
+    margin-right: calc(var(--base-unit) * 4);
+
+    opacity: 0;
+  }
+
+  /* tablets */
+  .hero .video-container.enter {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .hero .video-container.exit {
+    opacity: 0;
+    transform: translateX(50vw);
+  }
 }
 
 .hero .video-container .close-button {
   width: calc(var(--base-unit) * 6);
   height: calc(var(--base-unit) * 6);
+  margin-right: calc(var(--base-unit) * 2);
 
   display: flex;
   justify-content: center;
@@ -208,20 +250,19 @@ a {
   -webkit-backdrop-filter: blur(5px);
 }
 
+@media screen and (min-width: 768px) {
+  /* tablets */
+  .hero .video-container .close-button {
+    margin-right: 0;
+  }
+}
+
 .hero .video-collection .close-button:hover {
   cursor: pointer;
 }
 
 .hero .video-container .close-button svg {
   color: black;
-}
-
-.hero .video-container.enter {
-  animation: videoEnterAnimation 0.35s ease-in-out forwards;
-}
-
-.hero .video-container.exit {
-  animation: videoExitAnimation 0.35s ease-in-out forwards;
 }
 
 /* Divider */
