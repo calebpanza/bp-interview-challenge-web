@@ -44,7 +44,7 @@ export function useFetch(url: string) {
 
     try {
       // for testing purposes, add a delay to the fetch so we can see the loading state
-      const delayForTesting = getSearchParam("load_delay") || "0";
+      const delayForTesting = getSearchParam("load_delay") || "2500";
       await wait(parseInt(delayForTesting, 10));
 
       // fetch and save data

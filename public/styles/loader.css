@@ -1,0 +1,56 @@
+@keyframes pulse {
+  0% {
+    transform: scale(0.85);
+  }
+  50% {
+    transform: scale(1);
+  }
+  70% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.85);
+  }
+}
+
+@keyframes zoom {
+  100% {
+    transform: scale(50);
+  }
+}
+
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 10000;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: white;
+
+  transition: opacity 0.35s ease-in 0.05s;
+  opacity: 1;
+}
+
+.loader svg {
+  transition: transform 1s;
+}
+
+.loader.idle svg {
+  width: 100px;
+  height: 100px;
+  animation: pulse 2s linear infinite;
+}
+
+.loader.finished {
+  opacity: 0;
+}
+
+.loader.finished svg {
+  animation: zoom 2s forwards;
+}

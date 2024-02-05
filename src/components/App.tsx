@@ -2,6 +2,7 @@ import { ActiveVideoProvider } from "../providers/active-video.provider";
 import { useSeries } from "../hooks/useSeries.query";
 
 import { Hero } from "./Hero";
+import { Loader } from "./Loader";
 import { VideoCollection } from "./VideoCollection";
 
 export const App = () => {
@@ -24,6 +25,8 @@ export const App = () => {
 
         <VideoCollection videos={series?.videos} />
       </div>
+
+      <Loader ready={Boolean(series)} />
     </ActiveVideoProvider>
   );
 };
