@@ -19,6 +19,8 @@ export function Hero({ title, description, images, color }: IHero) {
         ))}
       </div>
 
+      <h3 className="wordmark">BibleProject</h3>
+
       <div className="content">
         <h1 className="title">{title}</h1>
         <hr className="divider sm light" />
