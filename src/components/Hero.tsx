@@ -1,3 +1,5 @@
+import { IVideoSeries } from "../types";
+
 import { useActiveVideo } from "../providers/active-video.provider";
 
 import { useFailure } from "../hooks/useFailure";
@@ -6,12 +8,7 @@ import { YouTubeEmbed } from "./YouTubeEmbed";
 
 import { Close } from "../icons/Close";
 
-interface IHero {
-  title: string;
-  description?: string;
-  images?: string[];
-  color?: string;
-}
+interface HeroProps extends IVideoSeries {}
 
 function ErrorCard() {
   return (
@@ -27,21 +24,14 @@ function ErrorCard() {
   );
 }
 
-export function Hero({ title, description, images, color }: IHero) {
+export function Hero({ title, description, images, color }: HeroProps) {
   const { activeVideo, setActiveVideo } = useActiveVideo();
   const error = useFailure();
 
   return (
     <div className="hero" style={{ color, borderColor: color }}>
       <div className="image-container">
-        {images?.map((image, index) => (
-          <img
-            key={index}
-            src={image}
-            alt={`${title} cover`}
-            className="image"
-          />
-        ))}
+        {<img src={images?.large} alt={`${title} cover`} className="image" />}
       </div>
 
       <h3 className="wordmark">BibleProject</h3>

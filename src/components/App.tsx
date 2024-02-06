@@ -14,12 +14,7 @@ export const App = () => {
         <Hero
           title={series?.title}
           description={series?.description}
-          images={[
-            series?.images.small,
-            series?.images.mini,
-            series?.images.medium,
-            series?.images.large,
-          ]}
+          images={series?.images}
           color={series?.color}
         />
 

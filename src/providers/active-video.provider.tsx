@@ -1,6 +1,18 @@
 import { createContext, useContext, useState } from "react";
 
-const ActiveVideoContext = createContext();
+type ActiveVideoProviderProps = {
+  children: React.ReactNode;
+};
+
+interface ActiveVideoContextValue {
+  activeVideo: string | null;
+  setActiveVideo: (videoId: string | null) => void;
+}
+
+const ActiveVideoContext = createContext<ActiveVideoContextValue>({
+  activeVideo: null,
+  setActiveVideo: () => null,
+});
 
 export const useActiveVideo = () => {
   const context = useContext(ActiveVideoContext);
@@ -12,8 +24,8 @@ export const useActiveVideo = () => {
   return context;
 };
 
-export function ActiveVideoProvider({ children }) {
-  const [activeVideo, setActiveVideo] = useState();
+export function ActiveVideoProvider({ children }: ActiveVideoProviderProps) {
+  const [activeVideo, setActiveVideo] = useState<string | null>(null);
 
   return (
     <ActiveVideoContext.Provider value={{ activeVideo, setActiveVideo }}>

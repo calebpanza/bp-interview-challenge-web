@@ -1,4 +1,10 @@
+import { IVideoItem } from "../types";
+
 import { Chevron } from "../icons/Chevron";
+
+interface ItemProps extends IVideoItem {
+  onClick: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
+}
 
 export function Item({
   id,
@@ -7,7 +13,7 @@ export function Item({
   images,
   durationSeconds,
   onClick,
-}) {
+}: ItemProps) {
   return (
     <a className="item" href={`/?item_id=${id}`} onClick={onClick}>
       <div className="image-container">
