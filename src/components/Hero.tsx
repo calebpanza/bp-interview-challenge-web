@@ -1,5 +1,7 @@
 import { useActiveVideo } from "../providers/active-video.provider";
 
+import { useFailure } from "../hooks/useFailure";
+
 import { YouTubeEmbed } from "./YouTubeEmbed";
 
 import { Close } from "../icons/Close";
@@ -11,8 +13,23 @@ interface IHero {
   color?: string;
 }
 
+function ErrorCard() {
+  return (
+    <div className="error-card">
+      <h3 className="title">Oops!</h3>
+      <h5 className="subtitle">There was an error loading the video.</h5>
+      <p className="description">
+        Try reloading the page and if the problem continues,{" "}
+        <a href="#">contact us</a> and we'll do our best to help you in a timely
+        manner.
+      </p>
+    </div>
+  );
+}
+
 export function Hero({ title, description, images, color }: IHero) {
   const { activeVideo, setActiveVideo } = useActiveVideo();
+  const error = useFailure();
 
   return (
     <div className="hero" style={{ color, borderColor: color }}>
@@ -39,7 +56,7 @@ export function Hero({ title, description, images, color }: IHero) {
         <button className="close-button" onClick={() => setActiveVideo(null)}>
           <Close size={16} />
         </button>
-        <YouTubeEmbed id={activeVideo} />
+        {error ? <ErrorCard /> : <YouTubeEmbed id={activeVideo} />}
       </div>
     </div>
   );
