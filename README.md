@@ -58,8 +58,35 @@ Tapping on a video item will open up a video player modal covering the entirety 
 
 A full-screen loading animation plays of the BibleProject logo stays on the screen until the data has loaded. This animated icon allows for a more easily manageable loading state visual and feels like a native "splash screen". When the effect is finished and content is displayed, the component will clean itself by unmounting to avoid pointer event conflicts.
 
+## Technical Considerations
+
+The file structure chosen takes into account the way that I typically structure my applications in order to allow for a balance between separation of concert _and_ reusability.
+
+I opted to organize my CSS files with media queries spread out between "component styles" as opposed to consolidating all media-specific queries into 1 call. The page is simple enough and the styles are not heavy enough to slow down browser rendering beyond reasonable standards. I believe that this code organization offers an easier time for code maintenance and developer handoff. All styles for all components for all screen sizes are grouped together with comment headings.
+
+I really like using a 4px implicit grid in my design systems, so you'll notice a `--base-unit` of 4 used for calculating sizes.
+
 ## Testing & Debugging
 
 `?debug=true` Enables a random timer that fires off between 1 and 5 seconds that will trigger an error message to display in the video player. This effect fires off once per page load and can be re-simulated by reloading the page.
 
 `?load_delay=[ number ]` Sets the amount of time in milliseconds that it will take for data to load. This allows the loading screen animation to play. The default is set to `2500`.
+
+## Thoughts and Reflects
+
+There are some additional design consideration I would make if expanding beyond the 6-hour constraint:
+
+- Animated hover state to the navigation button on the video item
+- Parallax effect to the hero background image
+- Load the video from the center on large devices in order to provide more space for the "minimized" YouTube player. I would animate a background blur to the hero background image and animate the title to comfortably sit above the video modal.
+- Dark mode
+
+There are some additional technical considerations I would make it expanding beyond the 6-hour constraint:
+
+- Support pre-loading a video by including an additional search parameter or path in the url
+- Implement the application using Remix in order to take advantage of server-side loading and static site rendering
+- Add metadata to the page header for the series and then each video
+- Research the YouTube iframe for tracking watch state and responding accordingly on the UI. I would likely enable a "keep watching" or "watch again" call to action on each card
+- Research the YouTube iframe settings for identifying when a video has completed in order to add a "watch next" call to action on the video player
+- Clean up & refactor CSS variables and types to be more scalable for a larger project
+- Leverage TailwindCSS for faster iterations and theme handling
