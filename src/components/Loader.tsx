@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import { BibleProject } from "../icons/BibleProject";
 
-export function Loader({ ready }) {
+interface LoaderProps {
+  ready: boolean;
+}
+
+export function Loader({ ready }: LoaderProps) {
   const [_dismount, _setDismount] = useState(false);
 
   useEffect(
@@ -25,3 +29,7 @@ export function Loader({ ready }) {
     </div>
   );
 }
+
+Loader.defaultProps = {
+  ready: false,
+};
