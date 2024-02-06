@@ -90,3 +90,4 @@ There are some additional technical considerations I would make it expanding bey
 - Research the YouTube iframe settings for identifying when a video has completed in order to add a "watch next" call to action on the video player
 - Clean up & refactor CSS variables and types to be more scalable for a larger project
 - Leverage TailwindCSS for faster iterations and theme handling
+- Use all sizes of the images in order to progressively load images to the larges available size. I would do this by rendering each of the smaller sizes on top of one another. They could "race" to be rendered until the `large` image has finished loading at which time the others will be dismounted to avoid eating up resources.
