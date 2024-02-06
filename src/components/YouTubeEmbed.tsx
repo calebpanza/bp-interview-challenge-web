@@ -1,4 +1,6 @@
-export function YouTubeEmbed({ id }) {
+import { IYouTubeEmbed } from "../types";
+
+export function YouTubeEmbed({ id }: IYouTubeEmbed) {
   return (
     <iframe
       width="100%"

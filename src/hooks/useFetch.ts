@@ -1,20 +1,8 @@
+import { FetchAction, FetchState } from "../types";
 import { useReducer, useEffect } from "react";
 
 import { getSearchParam } from "../utils/getSearchParam";
 import { wait } from "../utils/wait";
-
-interface FetchAction {
-  field: string;
-  value: any;
-}
-
-interface FetchState {
-  loading: boolean;
-  errors: any;
-  data: any;
-  called: boolean;
-  [key: string]: any;
-}
 
 function fetchReducer(state: FetchState, action: FetchAction[]) {
   const newState = { ...state };

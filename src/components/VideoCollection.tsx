@@ -1,9 +1,15 @@
+import { IVideoItem } from "../types";
+
 import { useActiveVideo } from "../providers/active-video.provider";
 
 import { Item } from "./Item";
 
-export function VideoCollection({ videos }) {
-  const { activeVideo, setActiveVideo } = useActiveVideo();
+interface VideoCollectionProps {
+  videos: IVideoItem[];
+}
+
+export function VideoCollection({ videos }: VideoCollectionProps) {
+  const { setActiveVideo } = useActiveVideo();
 
   return (
     <div className="video-collection">

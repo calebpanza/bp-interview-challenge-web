@@ -1,4 +1,6 @@
-export function BibleProject({ size }) {
+import { IconProps } from "../types";
+
+export function BibleProject({ size }: IconProps) {
   return (
     <svg
       width={size}

@@ -1,4 +1,6 @@
-export function Close({ size }) {
+import { IconProps } from "../types";
+
+export function Close({ size }: IconProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
